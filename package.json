@@ -1,0 +1,23 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@hail2u/css-mqpacker": "github:hail2u/node-css-mqpacker#v9.0.1",
+    "@nuxt/devtools": "latest",
+    "@types/node": "^18.17.3",
+    "nuxt": "^3.6.5",
+    "pug-plain-loader": "^1.1.0",
+    "sass": "^1.66.1",
+    "vite-plugin-pug": "^0.3.2"
+  },
+  "dependencies": {
+    "swiper": "^10.2.0"
+  }
+}

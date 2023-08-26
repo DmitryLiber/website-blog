@@ -1,0 +1,280 @@
+@import './_mixins.scss';
+@import './_variables.scss';
+
+@mixin font-face($name, $weight) {
+  @font-face {
+    font-weight: $weight;
+    font-family: $name;
+    font-style: normal;
+    src: url('/fonts/' + $name + '-' + $weight + '.woff2') format('woff2'),
+      url('/fonts/' + $name + '-' + $weight + '.woff') format('woff');
+    font-display: swap;
+  }
+}
+@include font-face('montserrat', 300);
+@include font-face('montserrat', 400);
+@include font-face('montserrat', 800);
+
+:root {
+  @if $colors {
+    @each $key, $value in $colors {
+      --color-#{$key}: #{$value};
+      --color-#{$key}--rgb: #{hextorgb($value)};
+    }
+  }
+
+  --font-primary: #{$font-primary};
+}
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  --scrollbar-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  margin-right: var(--scrollbar-width);
+  color: cl(secondary);
+  font-size: 18px;
+  font-family: var(--font-primary);
+  line-height: 1.44;
+  word-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: cl(primary) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  @include mq($l) {
+    background: transparent;
+  }
+}
+
+::-webkit-scrollbar-thumb {
+  @include mq($l) {
+    background-color: cl(primary);
+    border-radius: 10px;
+  }
+}
+
+::selection {
+  color: cl(bg);
+  text-shadow: none;
+  background: cl(primary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b,
+strong,
+.page-title,
+.block-title {
+  font-weight: 800;
+}
+
+h1 {
+  font-size: 25px;
+  margin: 0 0 20px;
+  line-height: 1.17;
+
+  @include mq($m) {
+    font-size: 30px;
+    margin: 0 0 30px;
+  }
+
+  @include mq($l) {
+    font-size: 56px;
+  }
+}
+
+h2 {
+  font-size: 22px;
+  margin: 0 0 30px;
+  line-height: 1.35;
+
+  @include mq($m) {
+    font-size: 24px;
+    margin: 0 0 40px;
+  }
+
+  @include mq($l) {
+    font-size: 34px;
+    margin: 0 0 50px;
+  }
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 1.36;
+  margin: 0 0 15px;
+
+  @include mq($m) {
+    font-size: 20px;
+    margin: 0 0 20px;
+  }
+
+  @include mq($l) {
+    font-size: 22px;
+    margin: 0 0 34px;
+  }
+}
+
+main {
+  & > * {
+    margin-bottom: 60px;
+
+    @include mq($m) {
+      margin-bottom: 80px;
+    }
+
+    @include mq($l) {
+      margin-bottom: 100px;
+    }
+  }
+}
+
+a {
+  color: cl(text);
+  text-decoration: none;
+  transition: color $time $tr;
+}
+
+p {
+  margin: 0 0 20px;
+}
+
+div[class*='__text'],
+div[class*='__details'],
+div[class*='__note'] {
+  p:only-of-type,
+  p:last-of-type {
+    margin: 0;
+  }
+}
+
+picture[class*='__img'],
+div[class*='__img'] {
+  @include center;
+
+  position: relative;
+  overflow: hidden;
+
+  & img {
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    position: absolute;
+  }
+}
+
+button {
+  padding: 0;
+  font-family: inherit;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+}
+
+.container {
+  width: 100%;
+  max-width: $max-width;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 $pad-s;
+
+  @include mq($m) {
+    padding: 0 $pad-m;
+  }
+
+  @include mq($l) {
+    padding: 0 $pad-l;
+  }
+
+  @include mq($xl) {
+    padding: 0;
+  }
+}
+
+.container--alt {
+  max-width: $max-width-text;
+}
+
+.link {
+  font-size: 18px;
+
+  &:hover {
+    @include mq-hover() {
+      text-decoration: underline;
+    }
+  }
+}
+
+.desc {
+  @include font(14px, 1.42, 400);
+
+  color: #{cl(alt)};
+}
+
+.form {
+  background-color: cl(secondary);
+
+  &__title {
+    color: cl(whte);
+  }
+
+  &__fields {
+    margin-bottom: 20px;
+
+    @include mq($m) {
+      margin-bottom: 30px;
+    }
+
+    @include mq($l) {
+      margin-bottom: 50px;
+    }
+
+    .field {
+      &:not(:last-child) {
+        margin-bottom: 15px;
+
+        @include mq($m) {
+          margin-bottom: 20px;
+        }
+
+        @include mq($l) {
+          margin-bottom: 25px;
+        }
+      }
+    }
+  }
+}

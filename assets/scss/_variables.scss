@@ -1,0 +1,52 @@
+/* СOLORS
+------------------------ */
+
+$colors: (
+  'primary': #3657d3,
+  'secondary': #1b1b1b,
+  'alt': #8d959c,
+  'whte': #fff,
+  'blck': #000,
+);
+
+/* EFFECTS
+------------------------ */
+$tr-1: ease;
+$tr-2: ease-in;
+$tr-3: ease-out;
+$tr-4: ease-in-out;
+$time: 0.3s;
+$tr: ease-in;
+$time-1: 0.1s;
+$time-2: 0.2s;
+$time-3: 0.3s;
+$time-4: 0.4s;
+$time-5: 0.5s;
+
+/* FONTS
+------------------------- */
+$font-primary: 'montserrat', 'Arial', sans-serif;
+
+/* GRID
+------------------------- */
+$max-width: 1340px;
+$max-width-text: 880px;
+
+/* WRAPPER PADDINGS
+------------------------- */
+$pad-s: 10px;
+$pad-m: 40px;
+$pad-l: 100px;
+$pad-xl: 150px;
+$pad-xls: 240px;
+
+/* BREAKPOINTS
+------------------------- */
+$xs: 480px;
+$s: 620px;
+$m: 768px;
+$ms: 1024px;
+$l: 1366px;
+$xl: 1600px;
+$xls: 1920px;
+$retina: '(-webkit-min-device-pixel-ratio: 1.5),(min-resolution: 1.5dppx),(min-resolution: 144dpi)';
